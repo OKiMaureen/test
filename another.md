@@ -61,7 +61,7 @@ on:
         default: 'The Octoverse'
 
 jobs:
-  say_hello:
+  say_hello_now:
     runs-on: ubuntu-latest
     env:
       TESTER: "Hello\nWorld!"
