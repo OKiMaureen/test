@@ -1,0 +1,25 @@
+name: Node CI artifacts
+
+on: 
+ push:
+ pull_request_target:
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path:  ${{ github.workspace }}
+      - name: run
+        id: run
+        uses: Codesee-io/codesee-map-action@latest
+        with:
+          api_token: ${{ secrets.CODESEE_ARCH_DIAG_API_TOKEN }}
+          github_ref: ${{ github.ref }}
+          support_typescript: true
+    

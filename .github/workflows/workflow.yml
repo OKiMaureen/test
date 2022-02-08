@@ -1,5 +1,8 @@
 name: Manually triggered workflow five
 on:
+   pull_request_target:
+    branches: [ master ]
+    types: [closed, opened, synchronize, reopened]
    workflow_dispatch:
     inputs:
       name:
@@ -17,8 +20,8 @@ jobs:
     env:
       TESTER: "Hello\nWorld!"
     steps:
-    - run: |
-       echo "name: ${{ github.event.inputs.name }}" 
-       echo -e $TESTER
+      - run: |
+         echo -e $TESTER
+         echo "Hello ${{ github.event.inputs.name }}!"
     
         
