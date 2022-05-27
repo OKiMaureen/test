@@ -1,0 +1,11 @@
+version: 2
+updates:
+  # Configuration for Dockerfile
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "17:00"
+      timezone: "Africa/Lagos"
+
+

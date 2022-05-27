@@ -1,0 +1,38 @@
+name: Node CI
+
+on: 
+ push:
+ pull_request_target:
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+#       - name: check
+#         run: |
+#           ls ${{ github.workspace }}
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifacts
+          path:   /home/runner/work/test/test/newer
+          
+          
+         
+      - name: Download artifact
+        uses: GarnetOS/action-download-artifact@new
+        with:
+          workflow: uploadArtifacts.yml
+          name: my-artifacts
+          
+      - name: Prepare image
+        run: |
+            pwd
+            sudo ls
+            sudo apt install -y util-linux wget zip
+            sudo mkdir /mnt/lfs
+            sudo mount -o loop suid fileB.md /mnt/lfs
+            sudo ls 
+     
