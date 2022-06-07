@@ -8,6 +8,8 @@ on:
     #   - '!.vscode/'
     #   - '!.gitignore'
     #   - '!Makefile'
+    
+  release:
 
 jobs:
 
@@ -15,14 +17,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Get release version
+      id: release_version
+      run: |
+        version="${github_ref//refs\/tags\//}"
+        echo "${version}"
+        echo "::set-output name=version::${version}"
+        echo "::set-output name=tag::${version}"
+      env:
+        github_ref: ${{ github.ref }}
 
     - name: Set up Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v3
       with:
         go-version: 1.17
 
     - name: Set up Node.js ⚙️
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3.3.0
       with:
         node-version: '14.x'
 
