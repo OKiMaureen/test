@@ -1,26 +1,39 @@
 name: Job Conditionals
 
-on: workflow_dispatch
+on:
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   a:
     runs-on: ubuntu-latest
+    if: github.repository_owner == 'okimaureen'
 
     steps:
-      - run: echo "Hello world"
+      - run: |
+              echo "Hello world"
+              echo "refs/pull/${{ github.event.number }}/merge"
+              run: exit 1
+              
+      - name: step 1    
+        run: |
+              echo "Hello world"
+      - name: step 2       
+        run: |
+              echo "Hello world now"
+              
   
-  b:
-   needs: a
-   runs-on: ubuntu-latest
+#   b:
+#    runs-on: ubuntu-latest
 
-   steps:
-    - run: exit 1
+#    steps:
+#     - run: echo "Hello world"
     
-  c:
-   needs: b
-   if: |
-    always() && needs.b.result == 'success'
-   runs-on: ubuntu-latest
+#   c:
+#    needs: b
+#    if: |
+#     always() && needs.b.result == 'success'
+#    runs-on: ubuntu-latest
 
-   steps:
-    - run: echo "Hello world"
+#    steps:
+#     - run: echo "Hello world"
