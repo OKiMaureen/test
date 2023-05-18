@@ -1,4 +1,9 @@
+name: bool
+
 on:
+  push:
+    branches: 
+      - testingB
   workflow_dispatch:
     inputs:
       debug_enabled:
