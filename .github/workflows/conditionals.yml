@@ -1,6 +1,9 @@
 name: Job Conditionals
 
-on: workflow_dispatch
+on: 
+  push:
+    branches:
+      - testingB
 
 jobs:
   a:
