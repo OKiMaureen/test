@@ -1,0 +1,17 @@
+name: PR Description Check
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+jobs:
+  pr-description-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Check PR Description
+        run: |
+          pr_description=$(
+            cat <<END
+            ${{ github.event.pull_request.body }}
+          END
+          )
