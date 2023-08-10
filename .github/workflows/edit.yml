@@ -15,4 +15,4 @@ jobs:
             ${{ github.event.pull_request.body }}
           END
           )
-          echo ${{ github.event.pull_request.body }}
+          echo "name: ${{ github.event.pull_request.body }}" 
