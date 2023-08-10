@@ -15,4 +15,4 @@ jobs:
             ${{ github.event.pull_request.body }}
           END
           )
-          echo "$pr_description" 
+          echo ${{ github.event.pull_request.body }}
