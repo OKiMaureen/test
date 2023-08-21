@@ -1,0 +1,54 @@
+name: Build
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          -
+            solr-version: 8
+            solr-package: lucene/solr
+            solr-package-version: 8.11.2
+            solr-sha512: 22fedcc0090eda72c3c5a5ea769c93adaf7d92c5c4479993f009ef0b9d42de5bd2ed1e0565ca01f3428587d8a3836286aa3017aab157050f2bd5bc3482fdebaa
+            solr-keys: 86EDB9C33B8517228E88A8F93E48C0C6EF362B9E
+          -
+            solr-version: 9
+            solr-package: solr/solr
+            solr-package-version: 9.3.0
+            solr-sha512: fcd1ca482744f4a72c21c59d1877f3aeeb4b8683cf89af70bb10d29fc07da1858628b2666e3c363227e4b2f7a8ef33c2b63065811ae1c2f2843fe9f09305cb59
+            solr-keys: 50E3EE1C91C7E0CB4DFB007B369424FC98F3F6EC
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Build ${{ matrix.solr-version }}
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          build-args: |
+            SOLR_PACKAGE=${{ matrix.solr-package }}
+            SOLR_VERSION=${{ matrix.solr-package-version }}
+            SOLR_SHA512=${{ matrix.solr-sha512 }}
+            SOLR_KEYS=${{ matrix.solr-keys }}
+          push: true
+          tags: aerzas/solr:${{ matrix.solr-version }}-latest,aerzas/solr:${{ matrix.solr-version }}-${{ github.ref_name }}
