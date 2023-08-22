@@ -4,6 +4,6 @@ on:
 
 jobs:
   job:
-    uses: ./.github/workflows/called.yml
+    uses: ./.github/workflows/deploy.yml
     with:
       registry: dockerhub
