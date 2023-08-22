@@ -1,0 +1,9 @@
+name: Trigger
+on:
+  workflow_dispatch:
+
+jobs:
+  job:
+    uses: ./.github/workflows/called.yml
+    with:
+      registry: dockerhub
