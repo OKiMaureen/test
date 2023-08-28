@@ -15,8 +15,8 @@ jobs:
     with:
       registry: ${{ inputs.registry }}
 
-  dockerhub: 
-    if: inputs.registry != 'ghcr'
-    uses: ./.github/workflows/deploy.yml
-    with:
-      registry: ${{ inputs.registry }}
+  # dockerhub: 
+  #   if: inputs.registry != 'ghcr'
+  #   uses: ./.github/workflows/deploy.yml
+  #   with:
+  #     registry: ${{ inputs.registry }}
