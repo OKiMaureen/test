@@ -2,6 +2,7 @@ name: bool
 
 on:
   push:
+  pull_request:
   workflow_dispatch:
     inputs:
       debug_enabled:
