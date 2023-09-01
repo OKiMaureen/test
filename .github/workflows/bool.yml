@@ -24,4 +24,7 @@ jobs:
     - name: added step
       run: |
        echo "added stepDebug session starting ..."
+    - name: added new step
+      run: |
+       echo "added stepDebug session starting ..."
   
