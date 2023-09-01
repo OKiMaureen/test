@@ -21,3 +21,7 @@ jobs:
        echo "debug_enabled: ${{github.workspace}}/actions"
       env:
           DEBUG_ENABLED: ${{ inputs.debug_enabled }}
+    - name: added step
+      run: |
+       echo "added stepDebug session starting ..."
+  
