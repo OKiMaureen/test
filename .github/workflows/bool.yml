@@ -3,6 +3,8 @@ name: bool
 on:
   push:
   pull_request:
+  pull_request_review:
+    types: [submitted]
   workflow_dispatch:
     inputs:
       debug_enabled:
