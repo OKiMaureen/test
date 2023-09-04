@@ -16,5 +16,5 @@ jobs:
            
       - name: test embedd
         run: |
-          echo '::error file=README.md,line=1,title=testing links:: #58
+          echo '::error file=README.md,line=1,title=testing links::ticket-123
 
