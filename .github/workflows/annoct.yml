@@ -1,0 +1,15 @@
+name: Temp Annotations Test
+
+on:
+  push: 
+
+jobs:
+  test_annotations:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test configured autolink
+        run: |
+          echo '::error file=README.md,line=1,title=testing links::go/123'
+      - name: test gh link
+        run: |
+          echo '::error file=README.md,line=1,title=testing links::wiki https://github.com/your/repo/wiki/GHA-0001'
