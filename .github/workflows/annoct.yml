@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: test configured autolink
         run: |
-          echo '::error file=README.md,line=1,title=testing links::go/123'
+          echo '::error file=README.md,line=1,title=testing links::not github https://www.google.com/'
       - name: test gh link
         run: |
           echo '::error file=README.md,line=1,title=testing links::wiki https://github.com/your/repo/wiki/GHA-0001'
