@@ -36,5 +36,13 @@ jobs:
       - name: Test
         shell: bash
         run: |
+          echo "${{ vars.RUNNER }}"
+  env-var:
+    runs-on: ${{ vars.HOSTEDRUNNER}}
+    environment: stage
+    steps:
+      - name: Test
+        shell: bash
+        run: |
           echo "${{ vars.HOSTEDRUNNER }}"
 
