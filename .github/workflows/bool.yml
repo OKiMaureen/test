@@ -30,7 +30,7 @@ jobs:
         SELECTED_COLOR: ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}
       run: echo "The selected color is $SELECTED_COLOR"
   promote-candidate-image:
-    environment: stage
+    # environment: stage
     runs-on: ${{ vars.HOSTEDRUNNER }}
     steps:
       - name: Test
