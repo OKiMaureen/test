@@ -3,6 +3,7 @@ name: bool
 on:
   push:
   pull_request:
+  merge_group:
   pull_request_review:
     types: [submitted]
   workflow_dispatch:
@@ -20,13 +21,29 @@ jobs:
     - name: Start debug session
       run: |
        echo "Debug session starting ..."
-       echo "debug_enabled: ${{github.workspace}}/actions"
       env:
           DEBUG_ENABLED: ${{ inputs.debug_enabled }}
-    - name: added step
-      run: |
-       echo "added stepDebug session starting ..."
-    - name: added new step
-      run: |
-       echo "added stepDebug session starting ..."
-  
+    - name: Set color
+      id: random-color-generator
+      run: echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
+    - name: Get color
+      env:
+        SELECTED_COLOR: ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}
+      run: echo "The selected color is $SELECTED_COLOR"
+  promote-candidate-image:
+    # environment: stage
+    runs-on: ${{ vars.RUNNER}}
+    steps:
+      - name: Test
+        shell: bash
+        run: |
+          echo "${{ vars.RUNNER }}"
+  env-var:
+    runs-on: ${{ vars.HOSTEDRUNNER}}
+    environment: stage
+    steps:
+      - name: Test
+        shell: bash
+        run: |
+          echo "${{ vars.HOSTEDRUNNER }}"
+
