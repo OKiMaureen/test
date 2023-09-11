@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Job 1 step
-        run: echo job 1
+        run: sleep 30s
   job2:
      runs-on: ubuntu-latest
      steps:
@@ -21,7 +21,7 @@ jobs:
 
      steps:
        - name: Job 3 step
-         run: echo job 3
+         run: sleep 20s
   job4:
       runs-on: ubuntu-latest
       needs: [job1,job2,job3]
