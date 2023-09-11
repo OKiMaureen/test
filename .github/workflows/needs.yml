@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Job 1 step
-        run: sleep 30s
+        run: echo job 1
   job2:
      runs-on: ubuntu-latest
      steps:
@@ -21,10 +21,10 @@ jobs:
 
      steps:
        - name: Job 3 step
-         run: sleep 20s
+         run: echo job 1
   job4:
       runs-on: ubuntu-latest
-      needs: [job1,job2,job3]
+      needs: [job3]
       if: ${{ !cancelled() }}
       steps:
       - name: job 4 step
