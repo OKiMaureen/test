@@ -1,0 +1,30 @@
+name: needs ci
+on:
+  workflow_dispatch:
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Job 1 step
+        run: echo job 1
+  job2:
+     runs-on: ubuntu-latest
+     steps:
+       - name: Job 2 step
+         run:  exit 1
+
+  job3:
+     runs-on: ubuntu-latest
+     needs: job2
+     if: ${{ !cancelled() }}
+
+
+     steps:
+       - name: Job 3 step
+         run: echo job 3
+  job4:
+      runs-on: ubuntu-latest
+      needs: [job1,job2,job3]
+      steps:
+      - name: job 4 step
+        run: echo "runs after all previous jobs run"
