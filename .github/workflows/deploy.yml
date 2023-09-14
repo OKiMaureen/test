@@ -5,14 +5,14 @@ on:
 
 jobs:
   ghcr:
-    if: inputs.registry == 'ghcr'
-    permissions:
-      packages: write
+    # if: inputs.registry == 'ghcr'
+    # permissions:
+    #   packages: write
     runs-on: ubuntu-latest
     steps:
-      - run: echo Deploy to GHCR
+      - run: echo "${{ inputs.workflow_name }}"
   dockerhub:
-    if: inputs.registry != 'ghcr'
+    # if: inputs.registry != 'ghcr'
     runs-on: ubuntu-latest
     steps:
       - run: echo Deploy to Docker Hub
