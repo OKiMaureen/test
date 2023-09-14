@@ -1,8 +1,7 @@
 on:
   workflow_call:
     inputs:
-      registry:
-        type: string
+      workflow_name:
 
 jobs:
   ghcr:
