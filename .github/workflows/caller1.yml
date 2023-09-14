@@ -8,4 +8,4 @@ jobs:
     permissions:
       packages: write
     with:
-      registry: dockerhub
+      workflow_name: ${{github.job_id}}
