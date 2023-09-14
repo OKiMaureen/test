@@ -1,0 +1,9 @@
+name: caller
+on:
+  workflow_dispatch:
+
+jobs:
+  caller_job:
+    uses: ./.github/workflows/called.yml
+    with:
+      workflow_name: ${{ github.workflow }}
