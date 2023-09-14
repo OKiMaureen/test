@@ -5,7 +5,7 @@ on:
 jobs:
   job:
     uses: ./.github/workflows/deploy.yml
-    permissions:
-      packages: write
+    # permissions:
+    #   packages: write
     with:
-      workflow_name: ${{github.job_id}}
+      workflow_name: hello
