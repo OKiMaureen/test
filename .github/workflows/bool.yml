@@ -22,6 +22,11 @@ jobs:
         version: [10, 12, 14]
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.version }}
+
   debug:
     runs-on: ubuntu-latest
     steps:
