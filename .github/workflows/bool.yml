@@ -14,7 +14,14 @@ on:
         type: boolean
 
 
+
 jobs:
+  example_matrix:
+    strategy:
+      matrix:
+        version: [10, 12, 14]
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
   debug:
     runs-on: ubuntu-latest
     steps:
