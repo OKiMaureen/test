@@ -8,4 +8,4 @@ jobs:
     # permissions:
     #   packages: write
     with:
-      workflow_name: hello
+      workflow_name: ${{ github.workflow }}
