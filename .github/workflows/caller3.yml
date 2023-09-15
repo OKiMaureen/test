@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v3
       # - name: Set Job Name
       #   id: set_job_name
       #   run: echo "::set-output name=job_name::${{ job.name }}"
