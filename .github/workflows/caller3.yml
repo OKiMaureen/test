@@ -6,11 +6,13 @@ jobs:
   set_job_name:
     runs-on: ubuntu-latest
     outputs:
-      deploy_prefix: ${{ steps.set-job.outputs.job_name }}
+      job_name: ${{ steps.set-job.outputs.job_name }}
     steps:
-      - name: set output for deploy_prefix
-        id: set-job
-        run: |
+     - name: Checkout repository
+       uses: actions/checkout@v3
+     - name: set output for deploy_prefix
+       id: set-job
+       run: |
           echo "job_name=${{ github.job }}" >> $GITHUB_OUTPUT
 
 
