@@ -1,4 +1,4 @@
-name:create_label
+name: create_label
 on:
   issues:
     types:
