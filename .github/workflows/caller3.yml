@@ -14,6 +14,8 @@ jobs:
        id: set-job
        run: |
           echo "job_name=${{ github.job }}" >> $GITHUB_OUTPUT
+          echo workflow name:${{ github.job }}
+          
 
 
   caller_job:
