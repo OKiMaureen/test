@@ -6,4 +6,6 @@ jobs:
   caller_job:
     uses: ./.github/workflows/called1.yml
     with:
-      workflow_name: ${{ github.workflow }}
+      workflow_name: ${{ job }}
+  
+
