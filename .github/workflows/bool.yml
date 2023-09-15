@@ -2,6 +2,7 @@ name: bool
 
 on:
   push:
+  label:
   pull_request:
   merge_group:
   pull_request_review:
