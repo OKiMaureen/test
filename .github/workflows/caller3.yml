@@ -19,6 +19,7 @@ jobs:
 
 
   caller_job:
+    needs: [set_job_name]
     uses: ./.github/workflows/called1.yml
     with:
       workflow_name: ${{needs.set_job_name.outputs.job_name }}
