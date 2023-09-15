@@ -12,3 +12,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo workflow name:${{ inputs.workflow_name }}
+      - run: echo workflow name:${{ github.job }}
+
