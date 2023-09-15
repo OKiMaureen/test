@@ -1,62 +1,83 @@
-name: bool
-
 on:
-  push:
-  label:
-  pull_request:
-  merge_group:
-  pull_request_review:
-    types: [submitted]
-  workflow_dispatch:
-    inputs:
-      debug_enabled:
-        description: 'Run debug session'
-        required: false
-        type: boolean
-
-
+  issues:
+    types:
+      - labeled
 
 jobs:
-  example_matrix:
-    strategy:
-      matrix:
-        version: [10, 12, 14]
-        os: [ubuntu-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.version }}
-
-  debug:
+  label_event_job:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Start debug session
-      run: |
-       echo "Debug session starting ..."
-      env:
-          DEBUG_ENABLED: ${{ inputs.debug_enabled }}
-    - name: Set color
-      id: random-color-generator
-      run: echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
-    - name: Get color
-      env:
-        SELECTED_COLOR: ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}
-      run: echo "The selected color is $SELECTED_COLOR"
-  promote-candidate-image:
-    # environment: stage
-    runs-on: ${{ vars.RUNNER}}
-    steps:
-      - name: Test
-        shell: bash
+      - name: Check Out Repository
+        uses: actions/checkout@v3
+
+      - name: Display Label Information
         run: |
-          echo "${{ vars.RUNNER }}"
-  env-var:
-    runs-on: ${{ vars.HOSTEDRUNNER}}
-    environment: stage
-    steps:
-      - name: Test
-        shell: bash
-        run: |
-          echo "${{ vars.HOSTEDRUNNER }}"
+          echo "Label Name: ${{ github.event.label.name }}"
+
+
+# name: bool
+
+# on:
+#   label:
+  # push:
+
+  # pull_request:
+  # merge_group:
+  # pull_request_review:
+  #   types: [submitted]
+  # workflow_dispatch:
+  #   inputs:
+  #     debug_enabled:
+  #       description: 'Run debug session'
+  #       required: false
+  #       type: boolean
+
+
+
+
+
+# jobs:
+#   example_matrix:
+#     strategy:
+#       matrix:
+#         version: [10, 12, 14]
+#         os: [ubuntu-latest, windows-latest]
+#     runs-on: ${{ matrix.os }}
+#     steps:
+#       - uses: actions/setup-node@v3
+#         with:
+#           node-version: ${{ matrix.version }}
+
+  # debug:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: Start debug session
+  #     run: |
+  #      echo "Debug session starting ..."
+  #     env:
+  #         DEBUG_ENABLED: ${{ inputs.debug_enabled }}
+  #   - name: Set color
+  #     id: random-color-generator
+  #     run: echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
+  #   - name: Get color
+  #     env:
+  #       SELECTED_COLOR: ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}
+  #     run: echo "The selected color is $SELECTED_COLOR"
+  # promote-candidate-image:
+  #   # environment: stage
+  #   runs-on: ${{ vars.RUNNER}}
+  #   steps:
+  #     - name: Test
+  #       shell: bash
+  #       run: |
+  #         echo "${{ vars.RUNNER }}"
+  # env-var:
+  #   runs-on: ${{ vars.HOSTEDRUNNER}}
+  #   environment: stage
+  #   steps:
+  #     - name: Test
+  #       shell: bash
+  #       run: |
+  #         echo "${{ vars.HOSTEDRUNNER }}"
 
