@@ -7,11 +7,15 @@ on:
         description: 'version'
         required: true
         type: string
+      os:
+        description: 'operating system'
+        required: true
+        type: string
      
 jobs:
   build_stack:
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.os}}
     steps:
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v3
         with:
           node-version: ${{ inputs.node_version }}
