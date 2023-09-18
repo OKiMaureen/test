@@ -2,20 +2,36 @@ name: Reusable workflow
 
 on:
   workflow_call:
-    inputs:
-      node_version:
-        description: 'version'
-        required: true
-        type: string
-      os:
-        description: 'operating system'
-        required: true
-        type: string
-     
+    # inputs:
+    #   node_version:
+    #     description: 'version'
+    #     required: true
+    #     type: string
+    #   os:
+    #     description: 'operating system'
+    #     required: true
+    #     type: string
+
+
 jobs:
- setup_node:
-    runs-on: ${{ inputs.os}}
+  job2:
+    runs-on: ${{ matrix.os}}
+    strategy:
+      matrix:
+        version: [10, 12, 14]
+        os: [ubuntu-latest, windows-latest]
     steps:
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ inputs.node_version }}
+     - uses: actions/setup-node@v3
+       with:
+         node-version: ${{ inputs.node_version }}
+            
+
+  
+     
+# jobs:
+#  setup_node:
+#     runs-on: ${{ inputs.os}}
+#     steps:
+#       - uses: actions/setup-node@v3
+#         with:
+#           node-version: ${{ inputs.node_version }}
