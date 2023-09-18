@@ -1,0 +1,26 @@
+name: starter workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v3
+      - run: |
+          echo Add another action to build
+
+  calling-workflow:
+    name: calling-workflow ${{ matrix.stack_target_name }}
+    needs: build
+    strategy:
+      matrix:
+        version: [10, 12, 14]
+        
+            
+
+    uses: ./.github/workflows/matrixreusable.yml
+    with:
+      node_version: ${{ matrix.version }}
+    
