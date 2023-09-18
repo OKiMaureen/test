@@ -11,18 +11,18 @@ jobs:
       - run: |
           echo Add another action to build
 
-  job2:
-    name: "job2 ${{ matrix.version }} ${{ matrix.os }}"
-    needs: job1
-    strategy:
-      matrix:
-        version: [10, 12, 14]
-        os: [ubuntu-latest, windows-latest]
+  # job2:
+  #   name: "job2 ${{ matrix.version }} ${{ matrix.os }}"
+  #   needs: job1
+  #   strategy:
+  #     matrix:
+  #       version: [10, 12, 14]
+  #       os: [ubuntu-latest, windows-latest]
         
             
 
-    uses: ./.github/workflows/matrixreusable.yml
-    with:
-      node_version: ${{ matrix.version }}
-      os: ${{ matrix.os}}
+  #   uses: ./.github/workflows/matrixreusable.yml
+  #   with:
+  #     node_version: ${{ matrix.version }}
+  #     os: ${{ matrix.os}}
     
