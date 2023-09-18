@@ -4,16 +4,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  job1:
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v3
       - run: |
           echo Add another action to build
 
-  calling-workflow:
+  job2:
     name: calling-workflow ${{ matrix.stack_target_name }}
-    needs: build
+    # needs: job1
     strategy:
       matrix:
         version: [10, 12, 14]
