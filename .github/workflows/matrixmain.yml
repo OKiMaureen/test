@@ -11,6 +11,14 @@ jobs:
       - run: |
           echo Add another action to build
 
+
+
+  job2:
+      name: "job2 ${{ matrix.version }} ${{ matrix.os }}"
+      needs: job1
+      uses: ./.github/workflows/matrixreusable.yml
+     
+
   # job2:
   #   name: "job2 ${{ matrix.version }} ${{ matrix.os }}"
   #   needs: job1
