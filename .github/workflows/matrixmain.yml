@@ -12,7 +12,7 @@ jobs:
           echo Add another action to build
 
   job2:
-    name: "job ${{ matrix.version }} ${{ matrix.os }}"
+    name: "job2 ${{ matrix.version }} ${{ matrix.os }}"
     needs: job1
     strategy:
       matrix:
