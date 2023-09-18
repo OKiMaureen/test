@@ -12,8 +12,8 @@ jobs:
           echo Add another action to build
 
   job2:
-    name: calling-workflow ${{ matrix.stack_target_name }}
-    # needs: job1
+    name: "job ${{ matrix.version }} ${{ matrix.os }}"
+    needs: job1
     strategy:
       matrix:
         version: [10, 12, 14]
