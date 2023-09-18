@@ -14,7 +14,8 @@ on:
 
 
 jobs:
-  job2:
+  setup_node:
+    name: "${{ matrix.version }} ${{ matrix.os }}"
     runs-on: ${{ matrix.os}}
     strategy:
       matrix:
