@@ -15,4 +15,6 @@ jobs:
       with:
        distribution: 'temurin' # See 'Supported distributions' for available options
        java-version: '17'
-    - run: gradle init --type java-library
+    - run: |
+        gradle init --type java-library
+        ./gradlew build
