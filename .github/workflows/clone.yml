@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   clone-and-push:
@@ -15,7 +16,7 @@ jobs:
 
       - name: Clone branch
         run: |
-          git push https://github.com/todoproject HEAD:main
+          git push https://github.com/OKiMaureen/todoproject HEAD:main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
      
