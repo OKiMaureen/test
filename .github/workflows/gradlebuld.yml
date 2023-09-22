@@ -18,3 +18,7 @@ jobs:
     - run: |
         gradle init --type java-library
         ./gradlew build
+
+    - name: Run snapshot action
+        uses: mikepenz/gradle-dependency-submission@{latest}
+        
