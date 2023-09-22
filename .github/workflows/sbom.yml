@@ -22,7 +22,7 @@ jobs:
         $RUNNER_TEMP/sbom-tool generate -b . -bc . -pn ${{ github.repository }} ${{ github.ref }} -pv 1.0.0 -ps OwnerName -nsb https://sbom.mycompany.com -V Verbose
     - uses: actions/upload-artifact@v3
       with:
-        name: sbom
+        name: sbom-${{github.ref }}
         path: _manifest/spdx_2.2
     - name: SBOM upload 
       uses: advanced-security/spdx-dependency-submission-action@v0.0.1
