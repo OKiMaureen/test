@@ -1,0 +1,42 @@
+name: Read JSON File
+on:
+  workflow_dispatch:
+    inputs:
+      json_data:
+        description: 'Test JSON Decode'
+        required: true
+        type: string
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+      apiName: ${{ steps.myoutputs.outputs.apiName }}
+      apiMajorVersion: ${{ steps.myoutputs.outputs.apiMajorVersion }}
+      apiMinorVersion: ${{ steps.myoutputs.outputs.apiMinorVersion }}
+      apiPatchVersion: ${{ steps.myoutputs.outputs.apiPatchVersion }}
+      assetGroupId: ${{ steps.myoutputs.outputs.assetGroupId }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set env variables
+        id: myoutputs # set the outputs
+        run: | 
+            json_file='${{ inputs.json_data }}'
+            echo "apiName=$(echo $json_file | jq -r '.apiName')" >> $GITHUB_OUTPUT
+            echo "apiMajorVersion=$(echo $json_file | jq -r '.apiMajorVersion')" >> $GITHUB_OUTPUT
+            echo "apiMinorVersion=$(echo $json_file | jq -r '.apiMinorVersion')" >> $GITHUB_OUTPUT
+            echo "apiPatchVersion=$(echo $json_file | jq -r '.apiPatchVersion')" >> $GITHUB_OUTPUT
+            echo "assetGroupId=$(echo $json_file | jq -r '.assetGroupId')" >> $GITHUB_OUTPUT
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - name: Grab Job1 env variables
+        run: |
+            echo ${{needs.job1.outputs.apiName}}
+            echo ${{needs.job1.outputs.apiMajorVersion}}
+            echo ${{needs.job1.outputs.apiMinorVersion}}
+            echo ${{needs.job1.outputs.apiPatchVersion}}
+            echo ${{needs.job1.outputs.assetGroupId}}
