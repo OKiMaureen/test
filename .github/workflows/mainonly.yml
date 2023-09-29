@@ -2,6 +2,7 @@ name: test main
 
 on:
   push:
+    branches: Maureen-dev-patch-1
   pull_request:
   workflow_dispatch:
 
