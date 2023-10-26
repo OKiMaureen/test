@@ -19,23 +19,33 @@ jobs:
     permissions:
       actions: write
     steps:
-      - uses: actions/github-script@v6
-        name: Trigger build
-        with:
-          script: |
-            params = {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: 'main',
-              workflow_id: 'dispatchci.yml'
-            }
-            console.log(params)
-            result = await github.rest.actions.createWorkflowDispatch(params)
-            console.log(result)
+     - uses: actions/checkout@v3
+
+     - uses: actions/download-artifact@v3
+       with:
+         name: my-artifact
+    
+     - name: Display structure of downloaded files
+       run: ls -R
+
+      
+      # - uses: actions/github-script@v6
+      #   name: Trigger build
+      #   with:
+      #     script: |
+      #       params = {
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         ref: 'main',
+      #         workflow_id: 'dispatchci.yml'
+      #       }
+      #       console.log(params)
+      #       result = await github.rest.actions.createWorkflowDispatch(params)
+      #       console.log(result)
             
-  comment:
-     runs-on: ubuntu-latest
-     steps:
+  # comment:
+  #    runs-on: ubuntu-latest
+  #    steps:
 #       - uses: actions/github-script@v6
 #         with:
 #           script: |
@@ -47,10 +57,10 @@ jobs:
 #             })
 #             console.log(context.issue)
             
-      - name: pushes to codecommit
-        env:
-          CODECOMMIT_URL: ${{secrets.CODECOMMIT_URL}}
-        shell: bash
-        run: |
-          echo "$CODECOMMIT_URL"
-          echo  secrets.CODECOMMIT_URL
+      # - name: pushes to codecommit
+      #   env:
+      #     CODECOMMIT_URL: ${{secrets.CODECOMMIT_URL}}
+      #   shell: bash
+      #   run: |
+      #     echo "$CODECOMMIT_URL"
+      #     echo  secrets.CODECOMMIT_URL
