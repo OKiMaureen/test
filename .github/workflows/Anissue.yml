@@ -11,15 +11,16 @@ jobs:
       - name: Set the value in bash
         id: step_one
         run: |
-          {
-            echo 'cookies<<EOF'
-            KEYCLOAK_LOCALE=; KC_RESTART=;
-            echo EOF
-          } >> "$GITHUB_OUTPUT"
+  
+            delimiter="$(openssl rand -hex 8)"
+            echo "output-name<<${delimiter}" >> "${GITHUB_OUTPUT}"
+            echo "KEYCLOAK_LOCALE=; KC_RESTART=;" >> "${GITHUB_OUTPUT}"
+            echo "${delimiter}" >> "${GITHUB_OUTPUT}"
+  
 
       - name: Get value
         env:
-          cookies: ${{ steps.step_one.outputs.cookies }}
+          cookies: ${{ steps.step_one.outputs.output-name }}
         run: echo "This is the value of $cookies"
 
 
