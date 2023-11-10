@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.apache</groupId>
+        <artifactId>apache</artifactId>
+        <version>30</version>
+    </parent>
+
+    <groupId>org.apache.santuario</groupId>
+    <artifactId>xmlsec</artifactId>
+    <version>4.0.1-SNAPSHOT</version>
+    <packaging>bundle</packaging>
+
+    <name>Apache XML Security for Java</name>
+    <description>
+        Apache XML Security for Java supports XML-Signature Syntax and Processing,
+        W3C Recommendation 12 February 2002, and XML Encryption Syntax and
+        Processing, W3C Recommendation 10 December 2002. Since version 1.4,
+        the library supports the standard Java API JSR-105: XML Digital Signature APIs.
+    </description>
+    <url>https://santuario.apache.org/</url>
+    <inceptionYear>2000</inceptionYear>
+    <organization>
+        <name>The Apache Software Foundation</name>
+        <url>https://www.apache.org/</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>Apache-2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
