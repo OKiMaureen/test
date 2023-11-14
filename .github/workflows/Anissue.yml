@@ -12,7 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Sleep
-        run: sleep 1m
+        run: |
+               echo "concurrency: ${{concurency}}"
+               sleep 1m
+              
+  
       - name: Set the value in bash
         id: step_one
         run: |
