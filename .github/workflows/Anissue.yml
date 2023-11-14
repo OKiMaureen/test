@@ -12,9 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Sleep
-        run: |
-               echo "concurrency: ${{concurency}}"
-               sleep 1m
+        run: echo "concurrency:${{ concurrency }}"
+          
               
   
       - name: Set the value in bash
