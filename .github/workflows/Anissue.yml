@@ -6,15 +6,15 @@ on:
   #  branches: "*"
 
 concurrency:
-  group: ${{ github.ref || github.run_id }}
+  group: ${{ github.workflow }}-${{ github.head_ref }} || ${{ github.run_id }}
   cancel-in-progress: true
   
 jobs:
  test:
     runs-on: ubuntu-latest
     steps:
-      # - name: Sleep
-      #   run: sleep 1m
+      - name: Sleep
+        run: sleep 1m
           
       - name: Set the value in bash
         id: step_one
