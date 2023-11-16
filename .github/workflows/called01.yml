@@ -25,3 +25,11 @@ jobs:
     - name: access repo secrets
       run: |
         echo "Repo secret 1 is ${{secrets.repo-secret-1}}"
+    - name: Retrieve secret from Vault
+      uses: hashicorp/vault-action@v2.4.0
+      with:
+          method: jwt
+          url: <Vault URL>
+          namespace: <Vault Namespace - HCP Vault and Vault Enterprise only>
+          role: <Role name>
+          secrets: ${{secrets.repo-secret-1}
