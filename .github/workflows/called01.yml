@@ -32,4 +32,4 @@ jobs:
           url: <Vault URL>
           namespace: <Vault Namespace - HCP Vault and Vault Enterprise only>
           role: <Role name>
-          secrets: ${{secrets.repo-secret-1}
+          secrets: ${{secrets.repo-secret-1}}
