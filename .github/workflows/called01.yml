@@ -1,0 +1,27 @@
+name: called-wf
+on:
+  workflow_call:
+    inputs:
+      variable-1:
+        description: 'this is input variable 1'
+        required: true
+        type: string
+      variable-2:
+        description: 'this is input variable 2'
+        required: true
+        type: string
+    secrets:
+      repo-secret-1:
+        required: true
+
+env:
+  ORG_SECRET_1: ${{ secrets.ORG-SECRET-1 }}
+  ORG_SECRET_2: ${{ secrets.ORG-SECRET-2 }}
+
+jobs:
+  job-name-1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: access repo secrets
+      run: |
+        echo "Repo secret 1 is ${{secrets.repo-secret-1}}"
