@@ -1,0 +1,16 @@
+on:
+  push:
+    
+# Need to make all these secrets accessible to the called workflow
+# org-secret-1: org-value-1
+# org-secret-2: org-value-2
+# repo-secret-1: repo-value-1
+# repo-secret-2: repo-value-2
+jobs:
+  call-workflow:
+    uses: okimaureen/test/.github/workflows/called01.yml@main # bug with using local path reference in PRs
+    with:
+      variable-1: "variable-1"
+      variable-2: "variable-1"
+    secrets: 
+      repo-secret-1: secret/${{ github.ref }}/application/secrets

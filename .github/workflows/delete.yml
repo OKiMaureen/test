@@ -1,0 +1,33 @@
+name: Branch Deletion Check
+
+on:
+  delete:
+    branches:
+      - '*'
+
+jobs:
+  check-open-pull-request:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Check for Open Pull Request
+        id: check-pr
+        run: |
+          branch_name=${{ github.event.ref }}
+          open_prs=$(gh pr list --state open --base $branch_name --json number --porcelain)
+          if [ -z "$open_prs" ]; then
+            echo "No open pull requests found for branch $branch_name."
+            echo "::set-output name=pr_exists::false"
+          else
+            echo "Open pull requests found for branch $branch_name: $open_prs"
+            echo "::set-output name=pr_exists::true"
+          fi
+
+      - name: Fail if Open Pull Request Exists
+        if: steps.check-pr.outputs.pr_exists == 'true'
+        run: |
+          echo "There is an open pull request for the branch. Deleting the branch is not allowed."
+          exit 1
