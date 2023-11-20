@@ -6,7 +6,9 @@ on:
   #  branches: "*"
 
 concurrency:
+
   group: ${{ github.workflow }}-${{ github.head_ref }} || ${{ github.run_id }}
+
   cancel-in-progress: true
   
 jobs:
@@ -19,7 +21,9 @@ jobs:
       - name: Set the value in bash
         id: step_one
         run: |
+
             echo  ${{ github.workflow }}-${{ github.head_ref }} || ${{ github.run_id }}
+
             delimiter="$(openssl rand -hex 8)"
             echo "output-name<<${delimiter}" >> "${GITHUB_OUTPUT}"
             echo "KEYCLOAK_LOCALE=; KC_RESTART=;" >> "${GITHUB_OUTPUT}"
