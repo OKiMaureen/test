@@ -19,6 +19,7 @@ jobs:
     steps:
       - run: |
          echo -e $TESTER
-         echo "Hello ${{ github.event.inputs.name }}!"
+         # echo "Hello ${{ github.event.inputs.name }}!"
+         exit 1
     
         
