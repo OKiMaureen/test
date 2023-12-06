@@ -10,6 +10,11 @@ on:
         description: 'location'
         required: false
         default: 'The Octoverse'
+      long_text:
+        description: '\\text'
+        type: string
+        required: false
+        default: ' '
 
 jobs:
   say_hello:
@@ -19,7 +24,6 @@ jobs:
     steps:
       - run: |
          echo -e $TESTER
-         # echo "Hello ${{ github.event.inputs.name }}!"
-         exit 1
-    
+         echo "Hello ${{ github.event.inputs.name }}!"
+      
         
