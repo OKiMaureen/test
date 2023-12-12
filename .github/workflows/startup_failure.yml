@@ -1,0 +1,39 @@
+name: Manually triggered workflow 
+on:
+   workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        required: true
+        default: 'Mona the Octocat'
+      home:
+        description: 'location'
+        required: false
+        default: 'The Octoverse'
+      long_text:
+        description: '\\text'
+        type: string
+        required: false
+        default: ' '
+
+jobs:
+  startup_failure:
+    name: Analyze
+    runs-on: ubuntu-latest
+
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [  ]
+        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
+        # Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+ 
+    - run: |
+         echo -e $TESTER
+         echo "Hello ${{ github.event.inputs.name }}!"
