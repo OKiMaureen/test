@@ -29,6 +29,6 @@ jobs:
       - name: Archive production artifacts two
         uses: actions/upload-artifact@v4
         with:
-          name: my-artifact two
+          name: my-artifact two (2)
           path:  ${{ github.workspace }}
     
