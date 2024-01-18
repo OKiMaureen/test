@@ -1,7 +1,11 @@
+name: test release trigger
+
 on:
   workflow_dispatch:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  release:
+    types: [released]
+  # pull_request:
+  #   types: [opened, synchronize, reopened]
   # push:
   #  branches: "*"
 
