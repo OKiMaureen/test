@@ -1,7 +1,7 @@
 name: Manually triggered workflow 2
 on:
   push:
-    branches: [dev]
+    branches: [devee]
   workflow_dispatch:
     inputs:
       name:
