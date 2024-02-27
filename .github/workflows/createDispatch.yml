@@ -8,8 +8,16 @@ on:
 
   workflow_dispatch:
   pull_request:
-    paths:
-      - "new/test/**"
+    branches: [main]
+    types:
+      - opened
+      - synchronize
+      - labeled
+      - unlabeled
+      - ready_for_review
+      - edited
+      - reopened
+
   
 
 jobs:
