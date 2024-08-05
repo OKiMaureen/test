@@ -17,11 +17,11 @@ runs:
       run: echo "${{ toJson(steps) }}"
       shell: bash
     - name: step 2
-      id: random number
+      id: random-number
       run: echo "${{ toJson(steps) }}"
       shell: bash
     - name: step 3
-      id: random generator
+      id: random-generator
       run: echo "${{ toJson(steps) }}"
       shell: bash
 
