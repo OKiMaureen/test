@@ -20,7 +20,7 @@ runs:
       shell: bash
     - name: step 2
       id: random-number
-     env:
+      env:
         STEP_CONTEXT1: ${{ toJson(steps) }}
       run: echo "$STEPS_CONTEXT1"
       shell: bash
