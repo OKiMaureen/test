@@ -20,10 +20,10 @@ runs:
       id: random-number
       run: echo "${{ toJson(steps) }}"
       shell: bash
-    - name: step 3
-      id: random-generator
-      run: echo "${{ toJson(steps) }}"
-      shell: bash
+    # - name: step 3
+    #   id: random-generator
+    #   run: echo "${{ toJson(steps) }}"
+    #   shell: bash
 
       
     # - id: random-number-generator
