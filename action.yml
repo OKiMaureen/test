@@ -14,16 +14,22 @@ runs:
   steps:
     - name: step 1
       id: random-number-generator
-      run: echo "${{ toJson(steps) }}"
+      env:
+        STEP_CONTEXT: ${{ toJson(steps) }}
+      run: echo "$STEPS_CONTEXT"
       shell: bash
     - name: step 2
       id: random-number
-      run: echo "${{ toJson(steps) }}"
+     env:
+        STEP_CONTEXT1: ${{ toJson(steps) }}
+      run: echo "$STEPS_CONTEXT1"
       shell: bash
-    # - name: step 3
-    #   id: random-generator
-    #   run: echo "${{ toJson(steps) }}"
-    #   shell: bash
+    - name: step 3
+      id: random-generator
+      env:
+        STEP_CONTEXT2: ${{ toJson(steps) }}
+      run: echo "$STEPS_CONTEXT2"
+      shell: bash
 
       
     # - id: random-number-generator
