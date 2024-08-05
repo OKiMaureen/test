@@ -14,13 +14,17 @@ runs:
   steps:
     - name: step 1
       id: random-number-generator
-      run: echo "${{ toJson(steps) }}
+      run: echo "${{ toJson(steps) }}"
+      shell: bash
      - name: step 2
       id: random
-      run: echo "${{ toJson(steps) }}
+      run: echo "${{ toJson(steps) }}"
+      shell: bash
     - name: step 3
       id: random
-      run: echo "${{ toJson(steps) }}
+      run: echo "${{ toJson(steps) }}"
+      shell: bash
+
       
     # - id: random-number-generator
     #   run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
