@@ -16,12 +16,12 @@ runs:
       id: random-number-generator
       run: echo "${{ toJson(steps) }}"
       shell: bash
-     - name: step 2
+    - name: step 2
       id: random
       run: echo "${{ toJson(steps) }}"
       shell: bash
     - name: step 3
-      id: random
+      id: rand3
       run: echo "${{ toJson(steps) }}"
       shell: bash
 
