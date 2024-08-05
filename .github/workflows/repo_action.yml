@@ -12,7 +12,7 @@ jobs:
   hola_world_job:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      # - uses: actions/checkout@v3
 #       - name: removelabel
 #         uses: buildsville/add-remove-label@v1
 #         with:
@@ -24,5 +24,5 @@ jobs:
         uses: okimaureen/test@main
         with:
           who-to-greet: 'Mona the Octocat'
-      - run: echo random-number ${{ steps.foo.outputs.random-number }}
-        shell: bash
+      # - run: echo random-number ${{ steps.foo.outputs.random-number }}
+      #   shell: bash
