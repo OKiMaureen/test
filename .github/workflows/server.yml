@@ -3,8 +3,7 @@ name: Submit Cloud Build and deploy endpoints updated
 on:
   push:
   pull_request:
-  schedule: 
-    - cron:  '10 13 * * *'
+
   
 
 jobs:
