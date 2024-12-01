@@ -23,7 +23,7 @@ jobs:
       - name: Sleep
         run: sleep 1m
           
-      - name: Set the value in bash
+      - name: Set the value in bash script
         id: step_one
         run: |
 
