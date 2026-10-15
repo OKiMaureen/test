@@ -18,7 +18,7 @@ jobs:
       assetGroupId: ${{ steps.myoutputs.outputs.assetGroupId }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Set env variables
         id: myoutputs # set the outputs
         run: | 

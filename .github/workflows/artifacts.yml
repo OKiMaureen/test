@@ -13,7 +13,7 @@ jobs:
           credentials: https://$okimaureen:${{secrets.PAT }}@github.com/
       - run: cat ~/.gitconfig
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
         with:
