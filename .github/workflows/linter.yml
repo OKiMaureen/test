@@ -10,7 +10,7 @@ jobs:
     steps:
       
       # Check out the repository
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
 
       # Install Node.js
       - uses: actions/setup-node@v3.6.0

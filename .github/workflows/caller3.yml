@@ -9,7 +9,7 @@ jobs:
       job_name: ${{ steps.set-job-name.outputs.job_name }}
     steps:
      - name: Checkout repository
-       uses: actions/checkout@v3
+       uses: actions/checkout@v7
      - name: set output for job name
        id: set-job-name
        run: |
