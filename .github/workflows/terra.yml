@@ -70,7 +70,7 @@ jobs:
           tf_actions_working_dir: ${{ env.tf_working_dir }}${{ github.event.inputs.tf_stage }}
 
       - name: "Slack Notification"
-        uses: rtCamp/action-slack-notify@12e36fc18b0689399306c2e0b3e0f2978b7f1ee7
+        uses: rtCamp/action-slack-notify@33ca3be66c6f378fe1610fd1d5258632dbed5e58
         if: always()
         env:
           SLACK_ICON_EMOJI: ":pagerduty:"
@@ -124,7 +124,7 @@ jobs:
           tf_actions_working_dir: ${{ env.tf_working_dir }}${{ github.event.inputs.tf_stage }}
 
       - name: "Slack Notification"
-        uses: rtCamp/action-slack-notify@12e36fc18b0689399306c2e0b3e0f2978b7f1ee7
+        uses: rtCamp/action-slack-notify@33ca3be66c6f378fe1610fd1d5258632dbed5e58
         if: always()
         env:
           SLACK_ICON_EMOJI: ":pagerduty:"
