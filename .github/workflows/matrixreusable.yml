@@ -22,7 +22,7 @@ jobs:
         version: [10, 12, 14]
         os: [ubuntu-latest, windows-latest]
     steps:
-     - uses: actions/setup-node@v3
+     - uses: actions/setup-node@v7
        with:
          node-version: ${{ inputs.node_version }}
             
@@ -33,6 +33,6 @@ jobs:
 #  setup_node:
 #     runs-on: ${{ inputs.os}}
 #     steps:
-#       - uses: actions/setup-node@v3
+#       - uses: actions/setup-node@v7
 #         with:
 #           node-version: ${{ inputs.node_version }}
